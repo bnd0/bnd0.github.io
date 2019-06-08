@@ -94,6 +94,7 @@ map.on('draw.delete', updateArea);
 map.on('draw.update', updateArea);
 
 map.on('click', updateLength);
+map.on('touchstart', updateLength);
  
 function updateArea(e) {
 	var data = draw.getAll();
