@@ -131,11 +131,15 @@ function updateArea(e) {
 function updateLength(e) {
 	var data = draw.getSelected();
 	var answer = document.getElementById('calculated-length');
-	if (data.features.length > 0) 
+	if (data.features.length > 0)
 	{
-		var m_length = turf.lineDistance(data);
-		// restrict length to 2 decimal points
-		var rounded_length = Math.round(m_length*100)/100;
+		if (data.features[0].geometry.type != 'Point') 
+		{
+			var m_length = turf.lineDistance(data);
+			// restrict length to 2 decimal points
+			var rounded_length = Math.round(m_length*100)/100;
+		}
+		else {rounded_length = 0}
 		answer.innerHTML = '<p><strong>' + rounded_length + '</strong>&nbsp;км</p>';
 	} 
 	else 
